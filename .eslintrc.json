@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "browser": true,
+    "es2017": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/vue3-essential",
+    "@vue/standard",
+    "@vue/typescript/recommended"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "no-debugger": "warn",
+    "camelcase": "off",
+    "new-cap": "off",
+    "no-return-await": "off",
+    "indent": "off",
+    "vue/script-indent": [
+      "warn",
+      2,
+      {
+        "baseIndent": 1,
+        "switchCase": 0
+      }
+    ]
+  }
+}
