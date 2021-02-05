@@ -5,12 +5,7 @@
     "browser": true,
     "es2017": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:vue/vue3-essential",
-    "@vue/standard",
-    "@vue/typescript/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:vue/vue3-essential", "@vue/standard", "@vue/typescript/recommended"],
   "rules": {
     "no-console": "warn",
     "no-debugger": "warn",
@@ -25,6 +20,7 @@
         "baseIndent": 1,
         "switchCase": 0
       }
-    ]
+    ],
+    "space-before-function-paren": "off"
   }
 }
