@@ -1,7 +1,3 @@
-<!--
-@name
--->
-
 <template>
   <div class="layout">
     <div class="directory"></div>
