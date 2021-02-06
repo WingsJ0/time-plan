@@ -2,13 +2,35 @@
  * @name 数据
  */
 
+/* private */
+
+import Project from '@/type/porject'
+
+interface State {
+  projects: Project[]
+}
+
 /* public */
 
 const state = {
-  directory: []
+  projects: JSON.parse(localStorage.getItem('projects') || '[]')
+}
+const getters = {
+  directory(state: State) {
+    return state.projects.map(a => a.name)
+  }
+}
+const mutations = {
+  addProject(state: State, project: Project) {
+    state.projects.push(project)
+
+    localStorage.setItem('projects', JSON.stringify(state.projects))
+  }
 }
 
 export default {
   namespaced: true,
-  state
+  state,
+  getters,
+  mutations
 }

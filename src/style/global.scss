@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  color: #333333;
+  font-size: 14px;
+  font-family: 'Microsoft Jhenghei', 'Microsoft Yahei', sans-serif;
+}
+body {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+input {
+  border: 0;
+  outline: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
