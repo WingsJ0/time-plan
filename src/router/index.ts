@@ -1,3 +1,7 @@
+/**
+ * @name 路由
+ */
+
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import layout from '../views/layout/index.vue'
 

@@ -1,3 +1,7 @@
+/**
+ * @name Main
+ */
+
 import { createApp } from 'vue'
 import App from './app.vue'
 import './registerServiceWorker'

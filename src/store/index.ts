@@ -1,8 +1,12 @@
+/**
+ * @name 状态
+ */
+
 import { createStore } from 'vuex'
+import Data from './module/data'
 
 export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
+  modules: {
+    data: Data
+  }
 })
