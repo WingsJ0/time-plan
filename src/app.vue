@@ -12,5 +12,4 @@
 
 <style lang="scss">
   @import '@/style/global';
-  @import '@/style/class';
 </style>

@@ -5,20 +5,21 @@
 
 <template>
   <div class="add-dialog" :style="{ width: '450px' }">
-    <h2>新建项目</h2>
-    <fieldset>
-      <label>名称</label>
+    <div class="title">新建项目</div>
+    <div class="field">
+      <div class="label">名称</div>
       <input v-model.trim="name" />
-    </fieldset>
-    <fieldset>
-      <label>单日时长</label>
+    </div>
+    <div class="field">
+      <div class="label">单日时长</div>
       <input v-model.trim.number="period" type="number" />
-    </fieldset>
+    </div>
 
-    <footer>
+    <div class="foot">
       <button :disabled="!confirmable" @click="handle_confirm_click">确定</button>
-    </footer>
+    </div>
   </div>
 </template>
 
 <script src="./component.ts" lang="ts"></script>
+<style src="./style.scss" lang="scss" scoped></style>
