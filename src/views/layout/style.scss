@@ -15,14 +15,33 @@
     height: 100%;
     border-right: 1px solid $color-border-main;
 
-    .list {
+    .projects {
       flex-grow: 1;
       overflow: auto;
 
       @include scrollbar;
+
+      .entry {
+        overflow: hidden;
+        padding: 10px 15px;
+        border-bottom: 1px solid $color-border-sub;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        cursor: pointer;
+        transition: background-color 1s;
+
+        &:hover {
+          background-color: $color-blue-sub;
+          transition: background-color 0.3s;
+        }
+
+        .active {
+        }
+      }
     }
 
-    .bottom {
+    .foot {
       flex-shrink: 0;
       padding: 10px 15px;
       border-top: 1px solid $color-border-sub;

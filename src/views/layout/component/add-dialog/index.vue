@@ -4,7 +4,7 @@
 -->
 
 <template>
-  <div class="add-dialog" :style="{ width: '450px' }">
+  <div class="add-dialog" :style="{ width: '450px' }" v-observe-visibility="handle_visibility">
     <div class="title">新建项目</div>
     <div class="field">
       <div class="label">名称</div>

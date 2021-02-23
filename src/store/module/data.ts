@@ -4,7 +4,7 @@
 
 /* private */
 
-import Project from '@/type/porject'
+import Project from '@/type/project'
 
 interface State {
   projects: Project[]

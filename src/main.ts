@@ -2,12 +2,16 @@
  * @name Main
  */
 
+/* private */
+
 import { createApp } from 'vue'
 import App from './app.vue'
 import './registerServiceWorker'
 import Router from './router'
 import Store from './store'
 import Directive from './directive'
+
+/* construct */
 
 let app = createApp(App)
 
