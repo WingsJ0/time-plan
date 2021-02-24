@@ -38,7 +38,7 @@ export default defineComponent({
      */
     handle_add_confirm({ name, period }: { name: string; period: number }) {
       this.dialogShow = false
-      this.$store.commit('data/addProject', new Project(name, { period }))
+      this.$store.dispatch('data/addProject', { name, period })
     }
   }
 })

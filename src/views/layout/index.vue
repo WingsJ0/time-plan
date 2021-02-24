@@ -6,7 +6,7 @@
   <div class="layout">
     <div class="directory">
       <div class="projects">
-        <div v-for="a of projects" :key="a.name" class="entry">{{ a.name }}</div>
+        <div v-for="(a, i) of projects" :key="a + i" class="entry">{{ a }}</div>
       </div>
       <div class="foot">
         <img class="button" src="~@/images/plus.svg" @click="handle_add_click" />

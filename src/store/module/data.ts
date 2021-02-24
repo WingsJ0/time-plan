@@ -7,23 +7,22 @@
 import Project from '@/type/project'
 
 interface State {
-  projects: Project[]
+  projects: string[]
 }
 
 /* public */
 
 const state = {
+  current: '',
   projects: JSON.parse(localStorage.getItem('projects') || '[]')
 }
-const getters = {
-  directory(state: State) {
-    return state.projects.map(a => a.name)
-  }
-}
-const mutations = {
-  addProject(state: State, project: Project) {
-    state.projects.push(project)
+const actions = {
+  addProject({ state }: { state: State }, { name, period }: { name: string; period: number }) {
+    // todo：类型
+    state.projects.push(name)
+    let project = new Project(name, { period })
 
+    localStorage.setItem(`project_${name}`, JSON.stringify(project))
     localStorage.setItem('projects', JSON.stringify(state.projects))
   }
 }
@@ -31,6 +30,5 @@ const mutations = {
 export default {
   namespaced: true,
   state,
-  getters,
-  mutations
+  actions
 }
