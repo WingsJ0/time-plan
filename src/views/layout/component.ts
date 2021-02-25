@@ -1,4 +1,3 @@
-import Project from '@/type/project'
 import { defineComponent } from 'vue'
 import AddDialog from './component/add-dialog/index.vue'
 import { mapState } from 'vuex'
@@ -15,9 +14,16 @@ export default defineComponent({
     }
   },
   computed: {
-    ...mapState('data', ['projects'])
+    ...mapState('data', ['current', 'directory'])
   },
   methods: {
+    /**
+     * @name 处理入口点击
+     * @param name 名称
+     */
+    handle_entry_click(name: string) {
+      this.$store.commit('data/setCurrent', name)
+    },
     /**
      * @name 处理遮罩点击
      */

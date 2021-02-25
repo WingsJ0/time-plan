@@ -25,7 +25,6 @@ interface Work {
  */
 class Project {
   name: string
-  id: number
   option: Option
   works: Work[]
 
@@ -38,7 +37,6 @@ class Project {
     this.name = name
     this.option = option
 
-    this.id = Math.floor(Math.random() * 100000000)
     this.works = []
   }
 }

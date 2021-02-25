@@ -15,7 +15,7 @@
     height: 100%;
     border-right: 1px solid $color-border-main;
 
-    .projects {
+    .list {
       flex-grow: 1;
       overflow: auto;
 
@@ -36,7 +36,9 @@
           transition: background-color 0.3s;
         }
 
-        .active {
+        &.active {
+          color: white;
+          background-color: $color-blue-main;
         }
       }
     }
@@ -55,10 +57,23 @@
     }
   }
 
-  .wrap {
+  .content {
     background-color: white;
     flex-grow: 1;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      padding: 15px 25px;
+      border-bottom: 1px solid $color-border-main;
+      box-shadow: 0 0 2px 2px $color-border-sub;
+
+      .name {
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
   }
 
   .modal {
