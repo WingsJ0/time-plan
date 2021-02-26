@@ -12,9 +12,16 @@
         <img class="button" src="~@/images/plus.svg" @click="handle_add_click" />
       </div>
     </div>
-    <div class="content">
-      <div class="title">
-        <span class="name">{{ current }}</span>
+    <div v-if="current" class="content">
+      <div class="head">
+        <div class="title">
+          <span class="name">{{ current }}</span>
+          <img class="remove" src="~@/images/delete.svg" @click="handle_remove_click" />
+        </div>
+        <div class="tabs">
+          <span class="tab" :class="{ active: tab === Tab.config }" @click="handle_tab_click(Tab.config)">配置</span>
+          <span class="tab" :class="{ active: tab === Tab.work }" @click="handle_tab_click(Tab.work)">工作</span>
+        </div>
       </div>
     </div>
 

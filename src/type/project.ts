@@ -2,13 +2,11 @@
  * @name 项目
  */
 
-/* private */
-
 /**
  * @name 选项
  */
 interface Option {
-  period: number // 一日时长
+  period?: number // 一日时长
 }
 /**
  * @name 工作
@@ -16,6 +14,12 @@ interface Option {
 interface Work {
   name: string
   period: number
+}
+
+/* private */
+
+const DefaultOption: Option = {
+  period: 6
 }
 
 /* public */
@@ -33,9 +37,9 @@ class Project {
    * @param name 名称
    * @param option 选项
    */
-  constructor(name: string, option: Option) {
+  constructor(name: string, option?: Option) {
     this.name = name
-    this.option = option
+    this.option = Object.assign({}, DefaultOption, option)
 
     this.works = []
   }

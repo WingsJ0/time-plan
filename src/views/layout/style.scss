@@ -1,11 +1,11 @@
 @import '@/style/variable';
 @import '@/style/mixin';
 
+@include transition;
+
 .layout {
   display: flex;
   height: 100vh;
-
-  @include transition;
 
   .directory {
     flex-shrink: 0;
@@ -13,7 +13,7 @@
     flex-direction: column;
     width: 300px;
     height: 100%;
-    border-right: 1px solid $color-border-main;
+    border-right: 1px solid $color-gray-sub;
 
     .list {
       flex-grow: 1;
@@ -24,7 +24,7 @@
       .entry {
         overflow: hidden;
         padding: 10px 15px;
-        border-bottom: 1px solid $color-border-sub;
+        border-bottom: 1px solid $color-gray-minor;
         white-space: nowrap;
         text-overflow: ellipsis;
         word-break: break-all;
@@ -32,13 +32,12 @@
         transition: background-color 1s;
 
         &:hover {
-          background-color: $color-blue-sub;
+          background-color: $color-blue-minor;
           transition: background-color 0.3s;
         }
 
         &.active {
-          color: white;
-          background-color: $color-blue-main;
+          background-color: $color-blue-sub;
         }
       }
     }
@@ -46,8 +45,8 @@
     .foot {
       flex-shrink: 0;
       padding: 10px 15px;
-      border-top: 1px solid $color-border-sub;
-      box-shadow: 0 0 2px 2px $color-border-sub;
+      border-top: 1px solid $color-gray-minor;
+      box-shadow: 0 0 2px 2px $color-gray-minor;
 
       .button {
         width: 16px;
@@ -64,14 +63,47 @@
     display: flex;
     flex-direction: column;
 
-    .title {
-      padding: 15px 25px;
-      border-bottom: 1px solid $color-border-main;
-      box-shadow: 0 0 2px 2px $color-border-sub;
+    .head {
+      padding: 15px 20px;
+      box-shadow: 0 0 2px 2px $color-gray-minor;
 
-      .name {
-        font-size: 18px;
-        font-weight: bold;
+      .title {
+        display: flex;
+        align-items: center;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid $color-gray-sub;
+
+        .name {
+          font-size: 18px;
+          font-weight: bold;
+        }
+
+        .remove {
+          width: 16px;
+          height: 16px;
+          margin-left: auto;
+          cursor: pointer;
+        }
+      }
+
+      .tabs {
+        .tab {
+          margin-right: 10px;
+          cursor: pointer;
+          transition: color 0.5s;
+
+          &:hover {
+            color: $color-gray-main;
+          }
+
+          &.active {
+            color: $color-blue-main;
+            font-weight: bold;
+            cursor: default;
+            pointer-events: none;
+          }
+        }
       }
     }
   }

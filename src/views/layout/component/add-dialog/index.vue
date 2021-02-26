@@ -10,10 +10,6 @@
       <div class="label">名称</div>
       <input v-model.trim="name" />
     </div>
-    <div class="field">
-      <div class="label">单日时长</div>
-      <input v-model.trim.number="period" type="number" />
-    </div>
 
     <div class="foot">
       <button :disabled="!confirmable" @click="handle_confirm_click">确定</button>
