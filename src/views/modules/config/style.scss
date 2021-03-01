@@ -1,0 +1,13 @@
+.config {
+  padding: 40px;
+
+  .field {
+    display: flex;
+    align-items: center;
+
+    .name {
+      flex-shrink: 0;
+      width: 100px;
+    }
+  }
+}

@@ -19,9 +19,16 @@
           <img class="remove" src="~@/images/delete.svg" @click="handle_remove_click" />
         </div>
         <div class="tabs">
-          <span class="tab" :class="{ active: tab === Tab.config }" @click="handle_tab_click(Tab.config)">配置</span>
-          <span class="tab" :class="{ active: tab === Tab.work }" @click="handle_tab_click(Tab.work)">工作</span>
+          <router-link class="tab" active-class="active" tag="span" :to="{ name: 'config' }">配置</router-link>
+          <router-link class="tab" active-class="active" tag="span" :to="{ name: 'work' }">工作</router-link>
         </div>
+      </div>
+      <div class="wrap">
+        <router-view v-slot="{ Component }">
+          <keep-alive>
+            <component :is="Component" />
+          </keep-alive>
+        </router-view>
       </div>
     </div>
 

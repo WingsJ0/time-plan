@@ -13,6 +13,7 @@ const DirectoryKey = 'directory'
 interface State {
   current: string
   directory: string[]
+  project: Project
 }
 
 /**
@@ -27,50 +28,67 @@ function calcProjectKey(name: string): string {
 
 const state = {
   current: localStorage.getItem(CurrentKey) || '', // 当前项目名
-  directory: JSON.parse(localStorage.getItem(DirectoryKey) || '[]')
-}
-const mutations = {
-  setCurrent(state: State, name: string) {
-    state.current = name
-
-    localStorage.setItem(CurrentKey, name)
-  }
+  directory: JSON.parse(localStorage.getItem(DirectoryKey) || '[]'),
+  project: null as Project | null
 }
 const actions = {
-  addProject({ state }: ActionContext<State, {}>, name: string) {
+  async setCurrent({ state }: ActionContext<State, {}>, name: string) {
+    state.current = name
+
+    let s = localStorage.getItem(calcProjectKey(state.current))
+    if (s) {
+      state.project = JSON.parse(s)
+    } else {
+      // todo: 数据损坏
+    }
+
+    localStorage.setItem(CurrentKey, name)
+  },
+  async addProject({ state }: ActionContext<State, {}>, name: string): Promise<Project> {
     state.directory.push(name)
     let project = new Project(name)
 
     localStorage.setItem(calcProjectKey(name), JSON.stringify(project))
     localStorage.setItem(DirectoryKey, JSON.stringify(state.directory))
+
+    return project
   },
-  saveProject({ getters }: ActionContext<State, {}>, name: string) {
-    localStorage.setItem(calcProjectKey(name), JSON.stringify(getters.project))
+  async saveProject({ state, getters }: ActionContext<State, {}>) {
+    localStorage.setItem(calcProjectKey(state.current), JSON.stringify(getters.project))
   },
-  removeProject({ state }: ActionContext<State, {}>, name: string) {
-    let index = state.directory.indexOf(name)
+  async removeProject({ state }: ActionContext<State, {}>) {
+    let index = state.directory.indexOf(state.current)
     if (index > -1) {
       state.directory.splice(index, 1)
     }
     localStorage.setItem(DirectoryKey, JSON.stringify(state.directory))
 
-    localStorage.removeItem(calcProjectKey(name))
-
-    if (state.current === name) {
-      state.current = ''
-    }
+    state.current = ''
+    localStorage.removeItem(calcProjectKey(state.current))
   }
 }
 const getters = {
   project(state: State) {
-    return JSON.parse(localStorage.getItem(calcProjectKey(state.current)) || '{}')
+    if (state.project) {
+      return state.project
+    } else {
+      let s = localStorage.getItem(calcProjectKey(state.current))
+      if (s) {
+        state.project = JSON.parse(s)
+
+        return state.project
+      } else {
+        // todo: 数据损坏
+      }
+    }
   }
 }
+
+/* construct */
 
 export default {
   namespaced: true,
   state,
-  mutations,
   actions,
   getters
 }

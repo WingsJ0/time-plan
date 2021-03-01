@@ -30,7 +30,7 @@ export default defineComponent({
      * @param name 名称
      */
     handle_entry_click(name: string) {
-      this.$store.commit('data/setCurrent', name)
+      this.$store.dispatch('data/setCurrent', name)
     },
     /**
      * @name 处理遮罩点击

@@ -90,12 +90,9 @@
       .tabs {
         .tab {
           margin-right: 10px;
+          color: inherit;
           cursor: pointer;
           transition: color 0.5s;
-
-          &:hover {
-            color: $color-gray-main;
-          }
 
           &.active {
             color: $color-blue-main;
@@ -105,6 +102,11 @@
           }
         }
       }
+    }
+
+    .wrap {
+      flex-grow: 1;
+      overflow: auto;
     }
   }
 

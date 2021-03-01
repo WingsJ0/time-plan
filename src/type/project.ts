@@ -3,9 +3,9 @@
  */
 
 /**
- * @name 选项
+ * @name 配置
  */
-interface Option {
+interface Config {
   period?: number // 一日时长
 }
 /**
@@ -18,7 +18,7 @@ interface Work {
 
 /* private */
 
-const DefaultOption: Option = {
+const DefaultConfig: Config = {
   period: 6
 }
 
@@ -29,17 +29,17 @@ const DefaultOption: Option = {
  */
 class Project {
   name: string
-  option: Option
+  config: Config
   works: Work[]
 
   /**
    * @name 构造方法
    * @param name 名称
-   * @param option 选项
+   * @param config 配置
    */
-  constructor(name: string, option?: Option) {
+  constructor(name: string, config?: Config) {
     this.name = name
-    this.option = Object.assign({}, DefaultOption, option)
+    this.config = Object.assign({}, DefaultConfig, config)
 
     this.works = []
   }
