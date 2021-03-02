@@ -20,7 +20,7 @@
         </div>
         <div class="tabs">
           <router-link class="tab" active-class="active" tag="span" :to="{ name: 'config' }">配置</router-link>
-          <router-link class="tab" active-class="active" tag="span" :to="{ name: 'work' }">工作</router-link>
+          <router-link class="tab" active-class="active" tag="span" :to="{ name: 'works' }">工作</router-link>
         </div>
       </div>
       <div class="wrap">

@@ -25,6 +25,8 @@
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/no-empty-function": "warn",
-    "prefer-const": "off"
+    "prefer-const": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "lines-between-class-members": "warn"
   }
 }

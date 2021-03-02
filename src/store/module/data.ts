@@ -35,16 +35,11 @@ const actions = {
   async setCurrent({ state }: ActionContext<State, {}>, name: string) {
     state.current = name
 
-    let s = localStorage.getItem(calcProjectKey(state.current))
-    if (s) {
-      state.project = JSON.parse(s)
-    } else {
-      // todo: 数据损坏
-    }
-
     localStorage.setItem(CurrentKey, name)
   },
   async addProject({ state }: ActionContext<State, {}>, name: string): Promise<Project> {
+    // todo: 重名
+
     state.directory.push(name)
     let project = new Project(name)
 
@@ -74,7 +69,7 @@ const getters = {
     } else {
       let s = localStorage.getItem(calcProjectKey(state.current))
       if (s) {
-        state.project = JSON.parse(s)
+        state.project = Project.From(JSON.parse(s))
 
         return state.project
       } else {

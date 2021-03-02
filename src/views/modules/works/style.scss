@@ -1,0 +1,37 @@
+@import '@/style/variable';
+
+.works {
+  padding: 40px;
+
+  .head {
+    display: flex;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid $color-gray-sub;
+
+    > span {
+      flex-basis: 0;
+
+      &.done {
+        text-align: center;
+      }
+
+      &.operation {
+        text-align: end;
+      }
+    }
+  }
+
+  .control {
+    padding-top: 10px;
+    margin-top: 30px;
+    border-top: 1px solid $color-gray-sub;
+    text-align: end;
+
+    .add {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+  }
+}

@@ -16,9 +16,9 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/modules/config/index.vue')
       },
       {
-        name: 'work',
-        path: 'work',
-        component: () => import('@/views/modules/work/index.vue')
+        name: 'works',
+        path: 'works',
+        component: () => import('@/views/modules/works/index.vue')
       }
     ] as Array<RouteRecordRaw>
   }
