@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue'
 import AddDialog from './component/add-dialog/index.vue'
+import RemoveDialog from './component/remove-dialog/index.vue'
 import { mapGetters, mapState } from 'vuex'
 
 enum Tab {
@@ -10,7 +11,8 @@ enum Tab {
 export default defineComponent({
   name: 'layout',
   components: {
-    [AddDialog.name]: AddDialog
+    [AddDialog.name]: AddDialog,
+    [RemoveDialog.name]: RemoveDialog
   },
   data() {
     return {
@@ -34,9 +36,9 @@ export default defineComponent({
       this.$store.commit('data/setCurrent', id)
     },
     /**
-     * @name 处理遮罩点击
+     * @name 处理对话框关闭
      */
-    handle_mask_click() {
+    handle_dialog_close() {
       this.dialogShow = false
     },
     /**
@@ -47,18 +49,11 @@ export default defineComponent({
       this.dialogShow = true
     },
     /**
-     * @name 处理添加确认
-     * @param name 名称
-     */
-    handle_add_confirm(name: string) {
-      this.dialogShow = false
-      this.$store.dispatch('data/addProject', name)
-    },
-    /**
      * @name 处理删除点击
      */
     handle_remove_click() {
-      this.$store.dispatch('data/removeProject', this.current)
+      this.dialogType = 'remove'
+      this.dialogShow = true
     },
     /**
      * @name 处理标签点击

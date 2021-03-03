@@ -34,9 +34,10 @@
 
     <transition name="fade">
       <div v-show="dialogShow" class="modal">
-        <div class="mask" @click="handle_mask_click"></div>
+        <div class="mask" @click="handle_dialog_close"></div>
         <div class="dialog">
-          <add-dialog v-show="dialogType === 'add'" @confirm="handle_add_confirm" />
+          <add-dialog v-show="dialogType === 'add'" @close="handle_dialog_close" />
+          <remove-dialog v-show="dialogType === 'remove'" @close="handle_dialog_close" />
         </div>
       </div>
     </transition>

@@ -13,6 +13,11 @@ export default defineComponent({
       default: false
     }
   },
+  computed: {
+    confirmable(this: { name: string }) {
+      return Boolean(this.name)
+    }
+  },
   watch: {
     show() {
       if (!this.show) {
@@ -20,12 +25,10 @@ export default defineComponent({
       }
     }
   },
-  computed: {
-    confirmable(this: { name: string }) {
-      return Boolean(this.name)
-    }
-  },
   methods: {
+    /**
+     * @name 处理可见性变化
+     */
     handle_visibility(intersecting: boolean) {
       if (!intersecting) {
         this.name = ''
@@ -35,7 +38,9 @@ export default defineComponent({
      * @name 处理确认点击
      */
     handle_confirm_click() {
-      this.$emit('confirm', this.name)
+      this.$store.dispatch('data/addProject', this.name)
+
+      this.$emit('close')
     }
   }
 })

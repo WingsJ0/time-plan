@@ -1,4 +1,4 @@
-.add-dialog {
+.remove-dialog {
   .title {
     margin-bottom: 30px;
     font-size: 18px;
@@ -17,5 +17,9 @@
   .foot {
     margin-top: 50px;
     text-align: end;
+
+    button {
+      margin-left: 10px;
+    }
   }
 }

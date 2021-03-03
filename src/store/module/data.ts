@@ -39,7 +39,7 @@ const mutations = {
   }
 }
 const actions = {
-  addProject({ state }: ActionContext<State, {}>, name: string) {
+  addProject({ state, commit }: ActionContext<State, {}>, name: string) {
     // todo: 重名
 
     let project = new Project(name)
@@ -47,6 +47,8 @@ const actions = {
 
     localStorage.setItem(calcProjectKey(project.id), JSON.stringify(project))
     localStorage.setItem(DirectoryKey, JSON.stringify(state.directory))
+
+    commit('setCurrent', project.id)
   },
   saveProject({ state, getters }: ActionContext<State, {}>) {
     if (state.current) {
