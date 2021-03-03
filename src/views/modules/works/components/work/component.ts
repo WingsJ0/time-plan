@@ -11,6 +11,12 @@ export default defineComponent({
   },
   methods: {
     /**
+     * @name 处理状态点击
+     */
+    handle_status_click() {
+      this.binding.status = !this.binding.status
+    },
+    /**
      * @name 处理删除点击
      */
     handle_remove_click() {

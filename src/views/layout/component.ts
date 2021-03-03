@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import AddDialog from './component/add-dialog/index.vue'
-import { mapState } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 enum Tab {
   config = 'config',
@@ -22,15 +22,16 @@ export default defineComponent({
     }
   },
   computed: {
-    ...mapState('data', ['current', 'directory'])
+    ...mapState('data', ['current', 'directory']),
+    ...mapGetters('data', ['project'])
   },
   methods: {
     /**
      * @name 处理入口点击
-     * @param name 名称
+     * @param id 编号
      */
-    handle_entry_click(name: string) {
-      this.$store.dispatch('data/setCurrent', name)
+    handle_entry_click(id: number) {
+      this.$store.commit('data/setCurrent', id)
     },
     /**
      * @name 处理遮罩点击

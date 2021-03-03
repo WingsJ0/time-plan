@@ -23,7 +23,8 @@ const DefaultConfig: Config = {
 class Work {
   name: string
   time: number
-  done: boolean = false
+  id: number
+  status: boolean = false
 
   /**
    * @name 构造方法
@@ -33,6 +34,8 @@ class Work {
   constructor(name: string, time: number) {
     this.name = name
     this.time = time
+
+    this.id = Math.floor(Math.random() * 100000000)
   }
 }
 
@@ -45,16 +48,17 @@ class Project {
    * @param project 实例
    */
   static From(project: Project) {
-    return new Project(project.name, project.config, project.works)
+    return new Project(project.name, project.config, project.id, project.works)
   }
 
   name: string
   config: Config
-  works: Work[] = []
+  id: number
+  works: Work[]
 
   get progress(): number {
     let total = this.works.length
-    let done = this.works.reduce((p, c) => p + (c.done ? 1 : 0), 0)
+    let done = this.works.reduce((p, c) => p + (c.status ? 1 : 0), 0)
 
     return done / total
   }
@@ -65,10 +69,12 @@ class Project {
    * @param config 配置
    * @param works 工作列表
    */
-  constructor(name: string, config?: Config, works: Work[] = []) {
+  constructor(name: string, config?: Config, id?: number, works: Work[] = []) {
     this.name = name
     this.config = Object.assign({}, DefaultConfig, config)
     this.works = works
+
+    this.id = id || Math.floor(Math.random() * 100000000)
   }
 
   /**

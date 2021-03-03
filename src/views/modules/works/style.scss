@@ -12,7 +12,7 @@
     > span {
       flex-basis: 0;
 
-      &.done {
+      &.status {
         text-align: center;
       }
 
@@ -24,13 +24,13 @@
 
   .control {
     padding-top: 10px;
-    margin-top: 30px;
+    margin-top: 10px;
     border-top: 1px solid $color-gray-sub;
     text-align: end;
 
     .add {
-      width: 20px;
-      height: 20px;
+      width: 14px;
+      height: 14px;
       cursor: pointer;
     }
   }

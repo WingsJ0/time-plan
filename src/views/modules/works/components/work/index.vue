@@ -10,8 +10,8 @@
     <div :style="{ 'flex-grow': '2' }">
       <input v-model.number="binding.time" type="number" />
     </div>
-    <div :style="{ 'flex-grow': '1' }">
-      <span class="done"></span>
+    <div class="status" :style="{ 'flex-grow': '1' }">
+      <span class="checkbox" :class="{ done: binding.status }" @click="handle_status_click"></span>
     </div>
     <div class="operation" :style="{ 'flex-grow': '2' }">
       <img src="~@/images/delete.svg" @click="handle_remove_click" />

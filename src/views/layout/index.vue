@@ -6,7 +6,7 @@
   <div class="layout">
     <div class="directory">
       <div class="list">
-        <div v-for="(a, i) of directory" :key="a + i" class="entry" :class="{ active: current === a }" @click="handle_entry_click(a)">{{ a }}</div>
+        <div v-for="a of directory" :key="a.id" class="entry" :class="{ active: current === a.id }" @click="handle_entry_click(a.id)">{{ a.name }}</div>
       </div>
       <div class="foot">
         <img class="button" src="~@/images/plus.svg" @click="handle_add_click" />
@@ -15,7 +15,7 @@
     <div v-if="current" class="content">
       <div class="head">
         <div class="title">
-          <span class="name">{{ current }}</span>
+          <span class="name">{{ project.name }}</span>
           <img class="remove" src="~@/images/delete.svg" @click="handle_remove_click" />
         </div>
         <div class="tabs">
