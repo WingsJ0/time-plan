@@ -1,16 +1,17 @@
 @import '@/style/variable';
 
 .works {
-  padding: 40px;
+  padding: 40px 40px 100px 40px;
 
   .control {
+    z-index: $level-fixed;
     display: flex;
     align-items: center;
     position: fixed;
     right: 20px;
     bottom: 20px;
     height: 30px;
-    padding: 0 30px;
+    padding: 0 27px;
     margin-top: 10px;
     border-radius: 15px;
     background-color: $color-gray-sub;
@@ -20,8 +21,6 @@
       height: 14px;
       line-height: 14px;
       cursor: pointer;
-
-      mix-blend-mode: screen;
     }
   }
 

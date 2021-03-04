@@ -3,7 +3,7 @@
 -->
 
 <template>
-  <div class="work">
+  <div class="work" draggable="true" @dragstart="handle_dragstart" @dragover="handle_dragover" @drop="handle_drop">
     <div :style="{ 'flex-grow': '4' }">
       <input v-model="binding.name" />
     </div>

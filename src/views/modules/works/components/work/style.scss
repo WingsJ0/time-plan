@@ -6,7 +6,7 @@
   position: relative;
 
   &:hover {
-    &::after {
+    &::before {
       content: '';
       position: absolute;
       left: 0;
@@ -17,7 +17,11 @@
   }
 
   > div {
+    position: relative;
     flex-basis: 0;
+  }
+  input {
+    background-color: transparent;
   }
 
   .status {

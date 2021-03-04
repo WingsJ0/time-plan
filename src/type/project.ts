@@ -7,6 +7,7 @@
  */
 interface Config {
   period: number // 一日时长
+  start?: string // 起始日期
 }
 
 /* private */

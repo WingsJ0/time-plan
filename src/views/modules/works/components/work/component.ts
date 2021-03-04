@@ -21,6 +21,19 @@ export default defineComponent({
      */
     handle_remove_click() {
       this.$emit('remove', this.binding)
+    },
+
+    handle_dragstart(ev: any) {
+      ev.dataTransfer.effectAllowed = 'move'
+      ev.dataTransfer.setData('a', '0')
+    },
+    handle_dragover(ev: any) {
+      ev.preventDefault() // 阻止默认事件，使得元素可以落下
+      ev.dataTransfer.dropEffect = 'move'
+      // console.log(ev.dataTransfer.getData('a'))
+    },
+    handle_drop(ev: any) {
+      console.log(ev.dataTransfer.getData('a'))
     }
   }
 })

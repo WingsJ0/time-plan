@@ -3,11 +3,11 @@
 */
 
 @mixin scrollbar {
-  ::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     width: 8px;
     background-color: white;
   }
-  ::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb {
     background-color: #c1c1c1;
     border-radius: 4px;
   }
