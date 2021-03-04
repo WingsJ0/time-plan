@@ -86,7 +86,6 @@ class Project {
   addWork(name: string, time: number) {
     this.works.push(new Work(name, time))
   }
-
   /**
    * @name 删除工作
    * @param work 工作
@@ -96,6 +95,15 @@ class Project {
     if (index > -1) {
       this.works.splice(index, 1)
     }
+  }
+  /**
+   * @name 排列工作
+   * @param origin 原位置
+   * @param target 目标位置
+   */
+  arrangeWork(origin: number, target: number) {
+    let work = this.works.splice(origin, 1)[0]
+    this.works.splice(target, 0, work)
   }
 }
 

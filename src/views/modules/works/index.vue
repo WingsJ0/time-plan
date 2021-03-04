@@ -14,7 +14,9 @@
       <span class="operation" :style="{ 'flex-grow': '2' }">操作</span>
     </div>
     <div class="list">
-      <work v-for="(a, i) of project.works" :key="i" :binding="a" @remove="handle_work_remove" />
+      <transition-group name="flip">
+        <work v-for="(a, i) of project.works" :key="a.id" :binding="a" :index="i" @remove="handle_work_remove" />
+      </transition-group>
     </div>
   </div>
 </template>

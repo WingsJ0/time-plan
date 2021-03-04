@@ -1,4 +1,5 @@
 import { defineComponent, PropType } from 'vue'
+import { mapGetters } from 'vuex'
 import { Work } from '@/type/project'
 
 export default defineComponent({
@@ -7,7 +8,14 @@ export default defineComponent({
     binding: {
       type: Object as PropType<Work>,
       required: true
+    },
+    index: {
+      type: Number,
+      required: true
     }
+  },
+  computed: {
+    ...mapGetters('data', ['project'])
   },
   methods: {
     /**
@@ -22,18 +30,35 @@ export default defineComponent({
     handle_remove_click() {
       this.$emit('remove', this.binding)
     },
-
-    handle_dragstart(ev: any) {
-      ev.dataTransfer.effectAllowed = 'move'
-      ev.dataTransfer.setData('a', '0')
+    /**
+     * @name 处理拖放开始
+     * @param ev 拖放事件
+     */
+    handle_dragstart(ev: DragEvent) {
+      if (ev.dataTransfer) {
+        ev.dataTransfer.effectAllowed = 'move'
+        ev.dataTransfer.setData('origin', this.index.toString())
+      }
     },
-    handle_dragover(ev: any) {
-      ev.preventDefault() // 阻止默认事件，使得元素可以落下
-      ev.dataTransfer.dropEffect = 'move'
-      // console.log(ev.dataTransfer.getData('a'))
+    /**
+     * @name 处理拖放悬停
+     * @param ev 拖放事件
+     */
+    handle_dragover(ev: DragEvent) {
+      ev.preventDefault()
+      if (ev.dataTransfer) {
+        ev.dataTransfer.dropEffect = 'move'
+      }
     },
-    handle_drop(ev: any) {
-      console.log(ev.dataTransfer.getData('a'))
+    /**
+     * @name 处理拖放放置
+     * @param ev 拖放事件
+     */
+    handle_drop(ev: DragEvent) {
+      if (ev.dataTransfer) {
+        let origin = +ev.dataTransfer.getData('origin')
+        this.project.arrangeWork(origin, this.index)
+      }
     }
   }
 })
