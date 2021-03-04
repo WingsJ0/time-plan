@@ -27,6 +27,14 @@ export default defineComponent({
     ...mapState('data', ['current', 'directory']),
     ...mapGetters('data', ['project'])
   },
+  watch: {
+    project: {
+      handler() {
+        this.$store.dispatch('data/saveProject')
+      },
+      deep: true
+    }
+  },
   methods: {
     /**
      * @name 处理入口点击

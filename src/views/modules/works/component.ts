@@ -11,14 +11,6 @@ export default defineComponent({
   computed: {
     ...mapGetters('data', ['project'])
   },
-  watch: {
-    project: {
-      handler() {
-        this.$store.dispatch('data/saveProject')
-      },
-      deep: true
-    }
-  },
   methods: {
     /**
      * @name 处理添加点击
