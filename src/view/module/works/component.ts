@@ -1,12 +1,12 @@
 import { defineComponent } from 'vue'
 import { mapGetters } from 'vuex'
 import { Work } from '@/type/project'
-import WorkElement from './components/work/index.vue'
+import Card from './components/card/index.vue'
 
 export default defineComponent({
   name: 'works',
   components: {
-    [WorkElement.name]: WorkElement
+    [Card.name]: Card
   },
   computed: {
     ...mapGetters('data', ['project'])

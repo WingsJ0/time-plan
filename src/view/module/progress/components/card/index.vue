@@ -3,7 +3,7 @@
 -->
 
 <template>
-  <div class="work" draggable="true" @dragstart="handle_dragstart" @dragover="handle_dragover" @drop="handle_drop">
+  <div class="card" draggable="true" @dragstart="handle_dragstart" @dragover="handle_dragover" @drop="handle_drop">
     <div :style="{ 'flex-grow': '4' }">
       <input v-model="binding.name" />
     </div>
@@ -14,7 +14,7 @@
       <span class="checkbox" :class="{ done: binding.status }" @click="handle_status_click"></span>
     </div>
     <div class="operation" :style="{ 'flex-grow': '2' }">
-      <img src="~@/images/delete.svg" @click="handle_remove_click" />
+      <img src="~@/image/delete.svg" @click="handle_remove_click" />
     </div>
   </div>
 </template>

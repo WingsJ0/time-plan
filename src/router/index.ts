@@ -3,7 +3,7 @@
  */
 
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import layout from '@/views/layout/index.vue'
+import layout from '@/view/layout/index.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -13,12 +13,12 @@ const routes: Array<RouteRecordRaw> = [
       {
         name: 'config',
         path: 'config',
-        component: () => import('@/views/modules/config/index.vue')
+        component: () => import('@/view/module/config/index.vue')
       },
       {
         name: 'works',
         path: 'works',
-        component: () => import('@/views/modules/works/index.vue')
+        component: () => import('@/view/module/works/index.vue')
       }
     ] as Array<RouteRecordRaw>
   }

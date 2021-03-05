@@ -3,7 +3,12 @@ import { mapGetters } from 'vuex'
 import { Work } from '@/type/project'
 
 export default defineComponent({
-  name: 'work',
+  name: 'card',
+  data() {
+    return {
+      dragging: false
+    }
+  },
   props: {
     binding: {
       type: Object as PropType<Work>,
@@ -35,6 +40,8 @@ export default defineComponent({
      * @param ev 拖放事件
      */
     handle_dragstart(ev: DragEvent) {
+      this.dragging = true
+
       if (ev.dataTransfer) {
         ev.dataTransfer.effectAllowed = 'move'
         ev.dataTransfer.setData('origin', this.index.toString())
@@ -59,6 +66,12 @@ export default defineComponent({
         let origin = +ev.dataTransfer.getData('origin')
         this.project.arrangeWork(origin, this.index)
       }
+    },
+    /**
+     * @name 处理拖放结束
+     */
+    handle_dragend() {
+      this.dragging = false
     }
   }
 })

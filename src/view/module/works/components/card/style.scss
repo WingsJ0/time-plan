@@ -1,0 +1,34 @@
+@import '@/style/variable';
+
+.card {
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $color-blue-minor;
+  }
+  &.dragging {
+    background-color: $color-blue-sub;
+  }
+
+  > div {
+    position: relative;
+    flex-basis: 0;
+  }
+  input {
+    background-color: transparent;
+  }
+
+  .operation {
+    text-align: end;
+
+    img {
+      width: 14px;
+      height: 14px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  }
+}
