@@ -2,10 +2,12 @@
  * @name 路由
  */
 
+/* private */
+
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import layout from '@/view/layout/index.vue'
 
-const routes: Array<RouteRecordRaw> = [
+let routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     component: layout,
@@ -24,7 +26,9 @@ const routes: Array<RouteRecordRaw> = [
   }
 ]
 
-const router = createRouter({
+/* construct */
+
+let router = createRouter({
   history: createWebHashHistory(),
   routes
 })

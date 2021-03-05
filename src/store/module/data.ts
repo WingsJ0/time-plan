@@ -10,6 +10,9 @@ import { ActionContext } from 'vuex'
 const CurrentKey = 'current'
 const DirectoryKey = 'directory'
 
+/**
+ * @name 状态
+ */
 interface State {
   current: number
   directory: { name: string; id: number }[]
@@ -26,22 +29,20 @@ function calcProjectKey(id: number): string {
 
 /* public */
 
-const state = {
+let state = {
   current: +(localStorage.getItem(CurrentKey) || 0), // 当前项目名
   directory: JSON.parse(localStorage.getItem(DirectoryKey) || '[]'),
   project: null as Project | null
 }
-const mutations = {
+let mutations = {
   setCurrent(state: State, id: number) {
     state.current = id
 
     localStorage.setItem(CurrentKey, id.toString())
   }
 }
-const actions = {
+let actions = {
   addProject({ state, commit }: ActionContext<State, {}>, name: string) {
-    // todo: 重名
-
     let project = new Project(name)
     state.directory.push({ name, id: project.id })
 
@@ -70,14 +71,14 @@ const actions = {
     }
   }
 }
-const getters = {
+let getters = {
   project(state: State) {
     if (state.project?.id === state.current) {
       return state.project
     } else {
       let s = localStorage.getItem(calcProjectKey(state.current))
       if (s) {
-        state.project = Project.From(JSON.parse(s))
+        state.project = Project.from(JSON.parse(s))
 
         return state.project
       } else {

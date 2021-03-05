@@ -4,23 +4,19 @@
 
 /* private */
 
-import { DirectiveBinding } from 'vue'
+import { Directive } from 'vue'
 import ObserveVisibility from './observe-visibility'
 
-interface Directive {
-  [index: string]: {
-    name: string
-    mounted: (el: HTMLElement, binding: DirectiveBinding) => void
-    unmounted: (el: HTMLElement) => void
-  }
+interface Directives {
+  [index: string]: Directive
 }
 
 /* public */
 
-const directive: Directive = {
+let directives: Directives = {
   'observe-visibility': ObserveVisibility
 }
 
 /* construct */
 
-export default directive
+export default directives

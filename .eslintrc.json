@@ -28,6 +28,7 @@
     "prefer-const": "off",
     "@typescript-eslint/no-inferrable-types": "off",
     "lines-between-class-members": "off",
-    "vue/no-mutating-props": "off"
+    "vue/no-mutating-props": "off",
+    "no-empty": "off"
   }
 }

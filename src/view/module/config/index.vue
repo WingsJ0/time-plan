@@ -11,7 +11,7 @@
     <div class="field" tabindex="-1" @focus="handle_start_focus" @blur="handle_start_blur">
       <span class="name">起始日期</span>
       <div class="input">{{ project.config.start }}</div>
-      <date-pick />
+      <date-pick class="date" v-model="project.config.start" />
     </div>
   </div>
 </template>

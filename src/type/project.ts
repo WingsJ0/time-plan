@@ -2,6 +2,10 @@
  * @name 项目
  */
 
+/* private */
+
+import DayJS from 'dayjs'
+
 /**
  * @name 配置
  */
@@ -9,8 +13,6 @@ interface Config {
   period: number // 一日时长
   start?: string // 起始日期
 }
-
-/* private */
 
 const DefaultConfig: Config = {
   period: 6
@@ -48,7 +50,7 @@ class Project {
    * @name 从实例创建
    * @param project 实例
    */
-  static From(project: Project) {
+  static from(project: Project) {
     return new Project(project.name, project.config, project.id, project.works)
   }
 
@@ -72,7 +74,7 @@ class Project {
    */
   constructor(name: string, config?: Config, id?: number, works: Work[] = []) {
     this.name = name
-    this.config = Object.assign({}, DefaultConfig, config)
+    this.config = Object.assign({}, DefaultConfig, { start: DayJS().format('YYYY-MM-DD') }, config)
     this.works = works
 
     this.id = id || Math.floor(Math.random() * 100000000)

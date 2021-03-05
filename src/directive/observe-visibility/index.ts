@@ -6,7 +6,7 @@
 
 import { DirectiveBinding } from 'vue'
 
-const observers = new Map<HTMLElement, IntersectionObserver>()
+let observers = new Map<HTMLElement, IntersectionObserver>()
 
 /* public */
 
@@ -42,7 +42,7 @@ function unmounted(el: HTMLElement) {
 
 /* construct */
 
-const directive = {
+let directive = {
   name: 'observe',
   mounted,
   unmounted
