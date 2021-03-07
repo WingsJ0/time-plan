@@ -16,6 +16,10 @@
     <div class="field rest" tabindex="-1">
       <span class="name">休息日（周末默认）</span>
       <div class="input">
+        <span v-for="a of project.config.rest" :key="a" class="item">
+          <span>{{ a }}</span>
+          <img class="remove" src="~@/image/x.svg" @click="handle_resetRemove_click(a)" />
+        </span>
         <img class="add" src="~@/image/plus.svg" />
       </div>
       <date-pick class="date" :silent="true" @change="handle_rest_change" />

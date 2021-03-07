@@ -1,5 +1,7 @@
 @import '@/style/variable';
 
+$input-height: 38px;
+
 .config {
   padding: 40px;
 
@@ -19,6 +21,40 @@
       }
     }
 
+    &.rest {
+      .input {
+        height: auto;
+        min-height: $input-height;
+
+        .add {
+          height: 16px;
+          margin-left: auto;
+          cursor: pointer;
+        }
+        .item {
+          flex-shrink: 0;
+          display: inline-block;
+          position: relative;
+          height: 14px;
+          box-sizing: content-box;
+          padding: 5px 10px;
+          margin-right: 15px;
+          margin-top: 5px;
+          margin-bottom: 5px;
+          border: 1px solid $color-gray-minor;
+          line-height: 1;
+          border-radius: 8px;
+
+          .remove {
+            height: 80%;
+            margin-left: 5px;
+            cursor: pointer;
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+
     .name {
       flex-shrink: 0;
       width: 140px;
@@ -26,11 +62,12 @@
     .input {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       width: 100%;
-      height: 32px;
+      height: $input-height;
       padding: 0 10px;
       border: 1px solid #eeeeee;
-      line-height: 32px;
+      line-height: $input-height;
       appearance: none;
       outline: 0;
       transition: border 0.3s;
@@ -51,11 +88,4 @@
   //     }
   //   }
   // }
-  .rest {
-    .add {
-      height: 16px;
-      margin-left: auto;
-      cursor: pointer;
-    }
-  }
 }

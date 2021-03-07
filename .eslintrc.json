@@ -7,12 +7,21 @@
   },
   "extends": ["eslint:recommended", "plugin:vue/vue3-essential", "@vue/standard", "@vue/typescript/recommended"],
   "rules": {
+    "camelcase": "off",
+    "indent": "off",
+    "lines-between-class-members": "off",
     "no-console": "warn",
     "no-debugger": "warn",
-    "camelcase": "off",
-    "new-cap": "off",
+    "no-empty": "off",
     "no-return-await": "off",
-    "indent": "off",
+    "new-cap": "off",
+    "prefer-const": "off",
+    "space-before-function-paren": "off",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/member-delimiter-style": "off",
+    "@typescript-eslint/no-empty-function": "warn",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "vue/no-mutating-props": "off",
     "vue/script-indent": [
       "warn",
       2,
@@ -20,15 +29,6 @@
         "baseIndent": 1,
         "switchCase": 0
       }
-    ],
-    "space-before-function-paren": "off",
-    "@typescript-eslint/member-delimiter-style": "off",
-    "@typescript-eslint/camelcase": "off",
-    "@typescript-eslint/no-empty-function": "warn",
-    "prefer-const": "off",
-    "@typescript-eslint/no-inferrable-types": "off",
-    "lines-between-class-members": "off",
-    "vue/no-mutating-props": "off",
-    "no-empty": "off"
+    ]
   }
 }

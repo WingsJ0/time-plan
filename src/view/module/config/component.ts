@@ -13,10 +13,17 @@ export default defineComponent({
   methods: {
     /**
      * @name 处理休息日更改
-     * @param date
+     * @param date 日期
      */
     handle_rest_change(date: string) {
-      console.log(date)
+      this.project.addRest(date)
+    },
+    /**
+     * @name 处理休息日删除点击
+     * @param date 日期
+     */
+    handle_resetRemove_click(date: string) {
+      this.project.removeRest(date)
     }
   }
 })

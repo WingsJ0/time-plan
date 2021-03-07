@@ -5,6 +5,7 @@
 /* private */
 
 import DayJS from 'dayjs'
+import _ from 'lodash'
 
 /**
  * @name 配置
@@ -87,10 +88,28 @@ class Project {
 
   /**
    * @name 添加休息日
-   * @param date 休息日
+   * @param date 日期
    */
   addRest(date: string) {
-    this.config.rest.push(date)
+    let rest = this.config.rest
+
+    rest.push(date)
+    rest.sort((a: string, b: string) => (a > b ? 1 : -1))
+    rest = _.uniq(rest)
+
+    this.config.rest = rest
+  }
+  /**
+   * @name 删除休息日
+   * @param date 日期
+   */
+  removeRest(date: string) {
+    let rest = this.config.rest
+
+    let index = rest.indexOf(date)
+    if (index > -1) {
+      rest.splice(index, 1)
+    }
   }
   /**
    * @name 添加工作
@@ -128,7 +147,7 @@ class Project {
 
     let schedules = this.works.map(a => {
       let week = current.day()
-      while (week === 0 || week === 6) {
+      while (week === 0 || week === 6 || this.config.rest.includes(current.format('YYYY-MM-DD'))) {
         current = current.add(1, 'day')
         week = current.day()
       }
