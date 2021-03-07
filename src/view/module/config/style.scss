@@ -1,3 +1,5 @@
+@import '@/style/variable';
+
 .config {
   padding: 40px;
 
@@ -19,9 +21,11 @@
 
     .name {
       flex-shrink: 0;
-      width: 100px;
+      width: 140px;
     }
     .input {
+      display: flex;
+      align-items: center;
       width: 100%;
       height: 32px;
       padding: 0 10px;
@@ -30,14 +34,28 @@
       appearance: none;
       outline: 0;
       transition: border 0.3s;
-      cursor: pointer;
+    }
+    .date {
+      z-index: $level-absolute;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      visibility: hidden;
     }
   }
 
-  .date {
-    position: absolute;
-    left: 100px;
-    top: 31px;
-    visibility: hidden;
+  // .start {
+  //   &:focus {
+  //     .date {
+  //       visibility: visible;
+  //     }
+  //   }
+  // }
+  .rest {
+    .add {
+      height: 16px;
+      margin-left: auto;
+      cursor: pointer;
+    }
   }
 }

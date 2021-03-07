@@ -11,14 +11,26 @@ import DayJS from 'dayjs'
  */
 interface Config {
   period: number // 一日时长
-  start?: string // 起始日期
+  start: string // 起始日期
+  rest: string[] // 休息日
 }
 
 const DefaultConfig: Config = {
-  period: 6
+  period: 6,
+  start: '',
+  rest: []
 }
 
 /* public */
+
+/**
+ * @name 进度
+ */
+interface Schedule {
+  name: string
+  start: string
+  end: string
+}
 
 /**
  * @name 工作
@@ -59,13 +71,6 @@ class Project {
   id: number
   works: Work[]
 
-  get progress(): number {
-    let total = this.works.length
-    let done = this.works.reduce((p, c) => p + (c.status ? 1 : 0), 0)
-
-    return done / total
-  }
-
   /**
    * @name 构造方法
    * @param name 名称
@@ -80,6 +85,13 @@ class Project {
     this.id = id || Math.floor(Math.random() * 100000000)
   }
 
+  /**
+   * @name 添加休息日
+   * @param date 休息日
+   */
+  addRest(date: string) {
+    this.config.rest.push(date)
+  }
   /**
    * @name 添加工作
    * @param name 名称
@@ -106,6 +118,38 @@ class Project {
   arrangeWork(origin: number, target: number) {
     let work = this.works.splice(origin, 1)[0]
     this.works.splice(target, 0, work)
+  }
+  /**
+   * @name 生成进度表
+   */
+  generateSchedules(): Schedule[] {
+    let current = DayJS(this.config.start)
+    let fill = 0
+
+    let schedules = this.works.map(a => {
+      let week = current.day()
+      while (week === 0 || week === 6) {
+        current = current.add(1, 'day')
+        week = current.day()
+      }
+
+      let start = current.format('YYYY-MM-DD')
+      let end
+
+      fill += a.time
+      let delta = Math.floor(fill / this.config.period)
+      current = current.add(delta, 'day')
+      fill = fill % this.config.period
+      if (fill === 0) {
+        end = current.subtract(1, 'day').format('YYYY-MM-DD') // 不超过一天算在同一天
+      } else {
+        end = current.format('YYYY-MM-DD')
+      }
+
+      return { name: a.name, start, end }
+    })
+
+    return schedules
   }
 }
 

@@ -31,14 +31,7 @@
 
     > span {
       flex-basis: 0;
-
-      &.status {
-        text-align: center;
-      }
-
-      &.operation {
-        text-align: end;
-      }
+      text-align: center;
     }
   }
 

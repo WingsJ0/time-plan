@@ -12,6 +12,11 @@ export default defineComponent({
     modelValue: {
       type: String,
       default: '' // YYYY-MM-DD
+    },
+    silent: {
+      // 静默默认
+      tpe: String,
+      default: false
     }
   },
   computed: {
@@ -86,6 +91,8 @@ export default defineComponent({
           this.month = month
         }
       }
+
+      this.$emit('change', this.date.format('YYYY-MM-DD'))
     },
     /**
      * @name 处理日点击
@@ -93,6 +100,8 @@ export default defineComponent({
      */
     handle_day_click(day: number) {
       this.day = day
+
+      this.$emit('change', this.date.format('YYYY-MM-DD'))
     }
   }
 })

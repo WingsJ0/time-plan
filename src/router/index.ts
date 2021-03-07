@@ -23,9 +23,9 @@ let routes: Array<RouteRecordRaw> = [
         component: () => import('@/view/module/works/index.vue')
       },
       {
-        name: 'progress',
-        path: 'progress',
-        component: () => import('@/view/module/progress/index.vue')
+        name: 'schedule',
+        path: 'schedule',
+        component: () => import('@/view/module/schedule/index.vue')
       }
     ] as Array<RouteRecordRaw>
   }

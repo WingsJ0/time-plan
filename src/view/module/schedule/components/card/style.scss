@@ -1,0 +1,29 @@
+@import '@/style/variable';
+
+.card {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 5px 0;
+
+  .name {
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 0 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .date {
+    flex-shrink: 0;
+    width: 300px;
+    padding: 0 10px;
+    text-align: center;
+
+    .start {
+      color: $color-green;
+    }
+    .end {
+      color: $color-red;
+    }
+  }
+}

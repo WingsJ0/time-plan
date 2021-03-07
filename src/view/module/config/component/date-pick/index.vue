@@ -1,5 +1,6 @@
 <!--
 @name 时间选择
+@event change
 -->
 
 <template>
@@ -32,7 +33,7 @@
       <span class="week">六</span>
 
       <span v-for="i of start" :key="i"></span>
-      <span v-for="i of length" :key="i" class="day" :class="{ active: i === day }" @click="handle_day_click(i)">{{ i }}</span>
+      <span v-for="i of length" :key="i" class="day" :class="{ active: !silent && i === day }" @click="handle_day_click(i)">{{ i }}</span>
     </div>
   </div>
 </template>

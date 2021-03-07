@@ -10,7 +10,7 @@
 
     <div class="head">
       <span :style="{ 'flex-grow': '5' }">名称</span>
-      <span :style="{ 'flex-grow': '3' }">时长</span>
+      <span :style="{ 'flex-grow': '3' }">时长（小时）</span>
       <span class="operation" :style="{ 'flex-grow': '2' }">操作</span>
     </div>
     <div class="list">

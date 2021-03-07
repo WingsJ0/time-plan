@@ -11,7 +11,12 @@ export default defineComponent({
     ...mapGetters('data', ['project'])
   },
   methods: {
-    handle_start_focus() {},
-    handle_start_blur() {}
+    /**
+     * @name 处理休息日更改
+     * @param date
+     */
+    handle_rest_change(date: string) {
+      console.log(date)
+    }
   }
 })
