@@ -57,6 +57,12 @@ export default defineComponent({
       this.dialogShow = true
     },
     /**
+     * @name 处理名称变更
+     */
+    handle_name_change() {
+      this.$store.commit('data/modifyDirectory', { id: this.current, name: this.project.name })
+    },
+    /**
      * @name 处理删除点击
      */
     handle_remove_click() {

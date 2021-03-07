@@ -16,7 +16,9 @@
 
     .list {
       flex-grow: 1;
-      overflow: auto;
+      overflow-x: hidden;
+      overflow-y: auto;
+      border-right: 1px solid $color-gray-sub;
 
       @include scrollbar;
 
@@ -44,6 +46,7 @@
       flex-shrink: 0;
       padding: 10px 15px;
       border-top: 1px solid $color-gray-minor;
+      border-right: 1px solid $color-gray-sub;
       box-shadow: 0 0 2px 2px $color-gray-minor;
 
       .button {
@@ -60,7 +63,6 @@
     overflow: auto;
     display: flex;
     flex-direction: column;
-    border-left: 1px solid $color-gray-sub;
 
     .head {
       position: relative;
@@ -76,6 +78,7 @@
         border-bottom: 1px solid $color-gray-sub;
 
         .name {
+          border: none;
           font-size: 18px;
           font-weight: bold;
         }

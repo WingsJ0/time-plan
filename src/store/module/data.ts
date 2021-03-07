@@ -39,6 +39,14 @@ let mutations = {
     state.current = id
 
     localStorage.setItem(CurrentKey, id.toString())
+  },
+  modifyDirectory(state: State, { id, name }: { id: number; name: string }) {
+    let target = state.directory.find(a => a.id === id)
+    if (target) {
+      target.name = name
+
+      localStorage.setItem(DirectoryKey, JSON.stringify(state.directory))
+    }
   }
 }
 let actions = {

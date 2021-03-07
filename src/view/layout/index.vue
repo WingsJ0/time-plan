@@ -15,7 +15,7 @@
     <div v-if="current" class="content">
       <div class="head">
         <div class="title">
-          <span class="name">{{ project.name }}</span>
+          <input class="name" v-model="project.name" @change="handle_name_change" />
           <img class="remove" src="~@/image/delete.svg" @click="handle_remove_click" />
         </div>
         <div class="tabs">
