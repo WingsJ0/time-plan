@@ -1,24 +1,17 @@
-# code
+# 排期工具
 
-## Project setup
+辅助项目排期，生成日期安排的工具。
+
+## 命令
+
+开发：
+
 ```
-npm install
+npm run dev
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+构建：
 
-### Compiles and minifies for production
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
